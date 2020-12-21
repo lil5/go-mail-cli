@@ -26,7 +26,7 @@ func main() {
 		if info.IsDir() {
 			return nil
 		}
-		if inFileExt != ".htm" {
+		if inFileExt != ".gohtml" {
 			return nil
 		}
 		outFileName := strings.Replace(inFileName, ".gohtml", ".html", 1)
@@ -48,14 +48,14 @@ func main() {
 }
 
 func buildTemplate() *template.Template {
-	t, err := template.ParseGlob(filepath.Join(".", "layout", "*"))
+	t, err := template.ParseGlob(filepath.Join(".", "templates", "*"))
 	if err != nil {
 		log.Fatal(err)
 	}
 	return t
 }
 func buildPage(buf *bytes.Buffer, t *template.Template, inFile string) {
-	t, err := t.ParseGlob(filepath.Join(".", "layout", "*.gohtml"))
+	t, err := t.ParseGlob(filepath.Join(".", "templates", "*.gohtml"))
 	if err != nil {
 		log.Fatal(err)
 	}
