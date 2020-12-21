@@ -29,7 +29,7 @@ func main() {
 		if inFileExt != ".htm" {
 			return nil
 		}
-		outFileName := strings.Replace(inFileName, ".htm", ".html", 1)
+		outFileName := strings.Replace(inFileName, ".gohtml", ".html", 1)
 
 		buf := new(bytes.Buffer)
 		buildPage(buf, layout, filepath.Join(pagesPath, inFileName))
@@ -55,7 +55,7 @@ func buildTemplate() *template.Template {
 	return t
 }
 func buildPage(buf *bytes.Buffer, t *template.Template, inFile string) {
-	t, err := t.ParseGlob(filepath.Join(".", "layout", "*.htm"))
+	t, err := t.ParseGlob(filepath.Join(".", "layout", "*.gohtml"))
 	if err != nil {
 		log.Fatal(err)
 	}

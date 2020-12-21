@@ -1,4 +1,4 @@
-module github.com/lil5/go-mail-cli
+module github.com/lil5/go-mail-cli/v2
 
 go 1.15
 
